@@ -1,5 +1,6 @@
 from twitter import *
 import os
+import readline
 
 MY_TWITTER_CREDS = os.path.expanduser('~/.my_app_credentials')
 # Make it secure for each user
@@ -15,4 +16,4 @@ t = Twitter(auth=OAuth(
 
 # Updates your status
 # Taken out (for now)
-t.statuses.update(status=str(input()))
+t.statuses.update(status=str(raw_input()))
