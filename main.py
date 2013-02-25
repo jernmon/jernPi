@@ -15,5 +15,10 @@ t = Twitter(auth=OAuth(
     oauth_token, oauth_secret, CONSUMER_CREDS[0], CONSUMER_CREDS[1]))
 
 # Updates your status
-# Taken out (for now)
-t.statuses.update(status=str(raw_input()))
+while True:
+	tweet = str(raw_input("Enter tweet:"))
+	if tweet.strip().upper() != 'EXIT':
+		t.statuses.update(status=tweet)
+		print "Tweet successful"
+	else:
+		break
