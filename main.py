@@ -1,6 +1,7 @@
 from twitter import *
 import os
 import readline
+import io
 
 MY_TWITTER_CREDS = os.path.expanduser('~/.my_app_credentials')
 # Make it secure for each user
@@ -17,6 +18,9 @@ t = Twitter(auth=OAuth(
 # Updates your status
 while True:
 	tweet = str(raw_input("Enter tweet:"))
+	log = io.open("/var/log/auth.log")
+	lines = log.read()
+	lines = [l for l in lines if "ssh" in l]
 	if tweet.strip().upper() != 'EXIT':
 		t.statuses.update(status=tweet)
 		print "Tweet successful"
